@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+/* * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px;
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5;
+  margin: 10px;
+  position: relative;
+  -webkit-transition: all 700ms ease-in;
+}
+
+.panel h3 {
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active {
+  flex: 5;
+}
+
+.panel.active h3 {
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4),
+  .panel:nth-of-type(5) {
+    display: none;
+  }
+} */
+
+*{
+  /* 设计一个怪异盒子
+     避免计算content和padding和border的值
+     box-sizing默认值为content-box
+  */
+  box-sizing: border-box;
+}
+
+body{
+  display: flex;
+  /* 垂直居中  没有反应? */
+  align-items: center;
+  /* 水平居中 */
+  justify-content: center;
+  /* 设置高度100vh */
+  height: 100vh;
+  /* 100vh一般会有个进度条给他overflow hidden一下 */
+  overflow: hidden;
+  /* margin搞0有什么意义在这里? */
+  /* margin: 0; */
+}
+
+.container{
+  /* 让从上到下的div元素横向排列 贴紧最左端*/
+  display: flex;
+  /* 设置宽度九十比例差不多 */
+  width: 90vw;
+}
+
+.panel{
+  /* 因为div太小需要把整张图等比例放入cover */
+  background-size: cover;
+
+  background-position: center;
+  /* 设置高度80vh */
+  height: 80vh;
+  /* 设置圆角50px */
+  border-radius: 50px;
+  /* 设置鼠标经过效果 */
+  cursor: pointer;
+  /* 不知道flex:0.5是什么意思？ */
+  /* 好像是每一份按照0.5的占比来分container，那这里有五个盒子只需要0.2就够了啊 */
+  flex: 0.2;
+  margin: 10px;
+
+  position: relative;
+  /* 添加闪动动画 */
+  transition: all 700ms ease-in;
+  color: beige;
+}
+.panel h3{
+  font-size: 24px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  /* 透明度改为0方便后面js调整 */
+  opacity: 0;
+  
+  white-space: nowrap;
+}
+.panel.active{
+  flex: 5;
+}
+.panel.active h3{
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4;
+}
