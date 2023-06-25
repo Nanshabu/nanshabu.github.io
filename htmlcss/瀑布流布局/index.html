@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CSS瀑布流布局</title>
+    </head>
+    <style>
+        body {
+            background: #effcff;
+        }
+        .container {
+            height: 600px;
+            /* width: 1200px; */
+            display: flex;
+            justify-content: center;
+            background-color: #abbdc1;
+            overflow: auto;
+            /* 经典居中 */
+            margin: 0 12%;
+            padding: 5px;
+        }
+        .container::-webkit-scrollbar {
+            width: 10px;
+            /* height: 10px; */
+            /* border-radius: 10px; */
+            background-color: #f5f5f5;
+        }
+        .container::-webkit-scrollbar-thumb {
+            border-radius: 100px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-image: -webkit-gradient(
+                linear,
+                left bottom,
+                left top,
+                color-stop(0.44, rgb(72, 185, 198)),
+                color-stop(0.72, rgb(105, 207, 218)),
+                color-stop(0.86, rgb(149, 210, 253))
+            );
+            transition: 0.3s ease-in-out;
+        }
+        .container::-webkit-scrollbar-track {
+            border-radius: 100px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #f5f5f5;
+        }
+        .shell {
+            /* flex-direction: column; */
+            /* 关键: 列数 */
+            column-count: 5;
+            /* 关键: 列与列间隔 */
+            column-gap: 10px;
+        }
+        .img {
+            margin-bottom: 10px;
+        }
+        .img img {
+            width: 100%;
+            /* 图片间隙取消 */
+            vertical-align: top;
+        }
+        /* 做自适应 */
+        @media (max-width: 950px) {
+            .shell {
+                column-count: 4;
+            }
+        }
+        @media (max-width: 650px) {
+            .shell {
+                column-count: 3;
+            }
+        }
+        @media (max-width: 350px) {
+            .shell {
+                column-count: 2;
+            }
+        }
+    </style>
+    <style>
+        /* 改样式为文字的样式设置,不需要看的 */
+        header h1 {
+            padding-left: 10px;
+        }
+        header .content {
+            padding: 20px;
+            font-size: large;
+        }
+    </style>
+    <body>
+        <header>
+            <h1>瀑布流</h1>
+            <hr />
+            <div class="content">
+                <span>
+                    使用简单的css完成瀑布流布局，简单却也可以让你的页面实现高级感~
+                </span>
+                <a href="">项目源代码</a>
+                <br />
+                <span>
+                    这里盒子结构是container>shell>img*15,
+                    为了避免滚到最底下时候图片参差不齐所以就多套了一层shell
+                    做了一个滚动条,这样搞放在页面滚到最下面不会很丑(自我感觉)
+                </span>
+                <br />
+                <span style="color: #147c96">
+                    进入正题:实现瀑布流的方法之一--使用flex弹性布局
+                    <br />
+                    1.设置container盒子为弹性盒子
+                    <br />
+                    2.在shell中对行数做限制
+                    <strong>column-count: 4</strong>, 同时实现图片的大小自适应.
+                    <br />
+                    3.可以用媒体查询@media做宽度的适配,调整column-count的值
+                    <br />
+                    4.简单调整一下间距和滚动条(<a href="">滚动条设置</a>)
+                </span>
+            </div>
+        </header>
+        <div class="container">
+            <div class="shell">
+                <div class="img"><img src="./pic/1 (2).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (3).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (4).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (5).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (6).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (7).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (8).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (9).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (11).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (12).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (13).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (14).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (15).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (17).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (16).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (18).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (19).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (20).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (21).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (22).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (23).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (24).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (25).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (26).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (27).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (28).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (29).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (30).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (2).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (3).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (4).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (5).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (6).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (7).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (8).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (9).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (11).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (12).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (13).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (14).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (15).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (17).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (16).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (18).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (19).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (20).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (21).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (22).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (23).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (24).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (25).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (26).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (27).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (28).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (29).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (30).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (2).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (3).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (4).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (5).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (6).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (7).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (8).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (9).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (11).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (12).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (13).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (14).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (15).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (17).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (16).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (18).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (19).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (20).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (21).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (22).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (23).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (24).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (25).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (26).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (27).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (28).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (29).jpeg" /></div>
+                <div class="img"><img src="./pic/1 (30).jpeg" /></div>
+            </div>
+        </div>
+    </body>
+</html>
