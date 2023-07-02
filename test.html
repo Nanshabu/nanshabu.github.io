@@ -4,87 +4,32 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>主题色切换</title>
+        <title>节流</title>
     </head>
-    <style>
-        :root {
-            --p: rgb(237, 70, 70);
-            --b: rgb(200, 96, 96);
-        }
-        .them-1 {
-            /* --l: rgb(255, 40, 40); */
-            --p: rgb(237, 70, 70);
-            --b: rgb(200, 96, 96);
-        }
-        .them-2 {
-            /* --l: rgb(244, 255, 40); */
-            --p: rgb(237, 229, 70);
-            --b: rgb(198, 200, 96);
-        }
-        .them-3 {
-            /* --l: rgb(90, 255, 40); */
-            --p: rgb(120, 237, 70);
-            --b: rgb(125, 200, 96);
-        }
-        .them-4 {
-            /* --l: rgb(40, 255, 255); */
-            --p: rgb(70, 237, 229);
-            --b: rgb(96, 198, 200);
-        }
-        .them-5 {
-            /* --l: rgb(144, 40, 255); */
-            --p: rgb(170, 70, 237);
-            --b: rgb(158, 96, 200);
-        }
-        body {
-            background-color: var(--p);
-        }
-        ul {
-            /* inline-flex不再是块级元素 */
-            display: inline-flex;
-            padding-left: 0;
-            flex-direction: row;
-            background-color: var(--b);
-        }
-        li {
-            margin: 7px;
-            height: 40px;
-            width: 40px;
-            border-radius: 50%;
-            background-color: #fff;
-            list-style-type: none;
-        }
-        ul li:nth-child(1) {
-            background: rgb(255, 0, 0);
-        }
-        ul li:nth-child(2) {
-            background: rgb(251, 255, 0);
-        }
-        ul li:nth-child(3) {
-            background: rgb(106, 255, 0);
-        }
-        ul li:nth-child(4) {
-            background: rgb(0, 242, 255);
-        }
-        ul li:nth-child(5) {
-            background: rgb(144, 0, 255);
-        }
-    </style>
-    <script>
-        function change(them) {
-            console.log(them);
-            document.body.classList = them;
-        }
-    </script>
+    <style></style>
     <body>
-        <div class="container">
-            <ul>
-                <li onclick="change('them-1')"></li>
-                <li onclick="change('them-2')"></li>
-                <li onclick="change('them-3')"></li>
-                <li onclick="change('them-4')"></li>
-                <li onclick="change('them-5')"></li>
-            </ul>
-        </div>
+        helloworld
+        <button id="btn">按我~</button>
     </body>
+    <script>
+        let btn = document.getElementById("btn");
+        function debouce(fn, delay) {
+            let timer = null;
+            return function () {
+                // 如果计时器为空咱就开始执行
+                if (!timer) {
+                    console.log(this);
+                    fn();
+                    // 设置重置时间
+                    timer = setTimeout(() => {
+                        timer = null;
+                    }, delay);
+                }
+            };
+        }
+        function output() {
+            console.log("啊");
+        }
+        btn.addEventListener("click", debouce(output, 1000));
+    </script>
 </html>
