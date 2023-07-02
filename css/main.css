@@ -1,0 +1,166 @@
+* {
+    padding: 0;
+    margin: 0;
+    /* 输入框没有选中样式 */
+    outline: 0;
+    border: 0;
+    /* 全部都是borderbox */
+    box-sizing: border-box;
+}
+:root {
+    /* 背景图片 */
+    --bg-image: url(../public/meinv.jpeg);
+    --whiteColor: #ffffff;
+    --blackColor: #18314e;
+    --grayColor: #857a79;
+    --yellowColor: #fdc653;
+    --lightYellowColor: #f8d9ab;
+    --redColor: #ec6949;
+    --greenColor: #16a579;
+    --darkGreenColor: #147a88;
+    --pinkColor: #e784a6;
+    --blueColor: #457494;
+    --darkBlueColor: #22324d;
+    --redOrangeColor: #ed816b;
+}
+html {
+    /* 设置校验字体10px */
+    font-size: 62.5%;
+}
+body {
+    /* background-image: var(--bg-image); */
+    background-color: var(--lightYellowColor);
+    /* 相当于设置为100% auto, 图片向下叠加 */
+    background-size: cover;
+    /* 背景图铺满 */
+    background-attachment: fixed;
+    /* 背景图片居中现实 */
+    background-position: center;
+    color: var(--grayColor);
+}
+
+a {
+    color: var(--whiteColor);
+    text-decoration: none;
+}
+
+img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 2.2rem;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 1.9rem;
+}
+
+small {
+    font-size: 1rem;
+}
+
+p {
+    font-size: 1.6rem;
+    color: var(--redOrangeColor);
+}
+
+b {
+    color: var(--redColor);
+}
+
+.btn {
+    display: inline-block;
+    font-size: 1.6rem;
+    text-align: center;
+    line-height: 2.6rem;
+    padding: 0.4rem 1rem;
+    background-color: var(--redColor);
+    border-radius: 3.5rem;
+    transition: all 0.5s ease;
+}
+
+.container {
+    /* border: 5px #147a88 solid; */
+}
+main .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 19rem;
+}
+.container .avator {
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 1.6rem 0;
+}
+.container .name {
+    color: var(--darkGreenColor);
+    margin-bottom: 1rem;
+}
+.container p {
+    margin-bottom: 1rem;
+}
+.container .introduction {
+    position: relative;
+}
+.container .introduction p::after {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 125%;
+    /* background-color: #000; */
+    border-style: solid none none none;
+    left: -10%;
+    top: -27%;
+}
+.container .introduction p::before {
+    content: "";
+    position: absolute;
+    width: 106%;
+    height: 125%;
+    /* background-color: #000; */
+    border-style: none none solid none;
+    left: -3%;
+    top: -27%;
+}
+.container .welcome {
+    margin: 1.6rem;
+}
+.container nav .navbar {
+    display: flex;
+    width: 36rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.container nav .navbar .btn {
+    margin-bottom: 1.3rem;
+}
+.container nav .navbar .btn a {
+    color: var(--yellowColor);
+}
+
+.container .contact {
+    display: flex;
+    width: 20rem;
+    justify-content: space-around;
+}
+.container .contact .btn {
+    padding: 0;
+    display: block;
+    border-radius: 50%;
+    width: 2.8rem;
+    height: 2.8rem;
+}

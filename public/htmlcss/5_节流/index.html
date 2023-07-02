@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>节流</title>
+    </head>
+    <style></style>
+    <body>
+        <button id="btn">按我~</button>
+        debouce(fn,delay)为目标函数fn设置delay秒的冷却时间. 设置一个timer,
+        初始化为空, 空的时候执行fn, 执行后重置timer自动变为null的时间
+        <code>   
+            let btn = document.getElementById("btn");
+            function debouce(fn, delay) {
+                let timer = null;
+                return function () {
+                    // 最终调用的是return的函数
+                    // 因为回调了原函数所以需要修改this指向到原目标上
+                    let _this = this;
+                    // 如果计时器为空咱就开始执行
+                    if (!timer) {
+                        // this指向原目标
+                        fn.apply(_this);
+                        // 设置重置时间
+                        timer = setTimeout(() => {
+                            timer = null;
+                        }, delay);
+                    }
+                };
+            }
+            function changeBodyColor() {
+                // 确保this没错
+                console.log(this);
+                let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+                document.body.style.backgroundColor = "#" + randomColor;
+            }
+            btn.addEventListener("click", debouce(changeBodyColor, 1000));
+        </code>
+    </body>
+    <script>
+        let btn = document.getElementById("btn");
+        function debouce(fn, delay) {
+            let timer = null;
+            return function () {
+                // 最终调用的是return的函数
+                // 因为回调了原函数所以需要修改this指向到原目标上
+                let _this = this;
+                // 如果计时器为空咱就开始执行
+                if (!timer) {
+                    // this指向原目标
+                    fn.apply(_this);
+                    // 设置重置时间
+                    timer = setTimeout(() => {
+                        timer = null;
+                    }, delay);
+                }
+            };
+        }
+        function changeBodyColor() {
+            // 确保this没错
+            console.log(this);
+            let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            document.body.style.backgroundColor = "#" + randomColor;
+        }
+        btn.addEventListener("click", debouce(changeBodyColor, 1000));
+    </script>
+</html>
