@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>文字聚光灯效果</title>
+        <link rel="stylesheet" href="main.css" />
+        <script src="index.js" async></script>
+    </head>
+
+    <body>
+        <div>
+            <h1>文字聚光灯效果</h1>
+            <p>通过背景图片 + 裁剪 + 背景移动的叠加使用</p>
+            <p>
+                背景色<em>backgroud-image</em>作为咱们的打光效果,通过调整<em>background-position</em>来实现打光效果的移动
+            </p>
+            <p>
+                搭配赋值元素style的自定义属性--offsetX和--offsetY获取鼠标相对位置,css同步background-position的xy值
+            </p>
+            <p></p>
+            <p>
+                color: transparent + background-clip:
+                text将backgroud-image裁剪成文字的形状
+            </p>
+        </div>
+    </body>
+</html>
