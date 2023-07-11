@@ -1,0 +1,36 @@
+:root {
+    --lighting-size: 200px;
+    --lighting-color: #9333ea;
+    --lighting-highlight-color: #fff;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #020617;
+    color: #94a3b8;
+}
+h1 {
+    font-size: 520%;
+    text-decoration: none;
+    /* 实现一个默认的背景色黄蓝 */
+    background-image: radial-gradient(
+        var(--lighting-highlight-color),
+        var(--lighting-color),
+        var(--lighting-color)
+    );
+    background-size: var(--lighting-size) var(--lighting-size);
+    background-repeat: no-repeat;
+    /* 默认背景色的初始位置 */
+    background-position: 0% 50%;
+    /* 将没覆盖到的地方填满蓝色 */
+    background-color: var(--lighting-color);
+
+    color: transparent;
+    /* 背景被裁剪成文字的前景色 */
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    display: inline-block;
+    /* 实时更改background-position的值 */
+    background-position-x: calc(var(--offsetX) - var(--lighting-size) / 2);
+    background-position-y: calc(var(--offsetY) - var(--lighting-size) / 2);
+}
